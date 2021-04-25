@@ -8,5 +8,7 @@ const MainPage = Styled.main`
 
 
 const Main = () => {
-    return null;
+    return (
+        <MainPage></MainPage>
+    );
 }
