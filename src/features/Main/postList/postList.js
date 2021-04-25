@@ -11,7 +11,6 @@ export const PostList = ({posts}) => {
 
     return <List>
         {posts.map(post => {
-            
             return <Post {...post}/>;
 })}
     </List>;
