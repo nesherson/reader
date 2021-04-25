@@ -30,7 +30,7 @@ export const WebsiteList = (props) => {
             <Line/>
             <List>
             { websites.map(item => {
-                return <ListItem>{item}</ListItem>
+                return <ListItem key={item}>{item}</ListItem>
             })}
         </List>
         </div>

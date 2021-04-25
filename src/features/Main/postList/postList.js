@@ -8,10 +8,9 @@ const List = Styled.ul`
     `;
 
 export const PostList = ({posts}) => {
-
     return <List>
         {posts.map(post => {
-            return <Post {...post}/>;
+            return <Post key={post.id} post={post}/>;
 })}
     </List>;
 }

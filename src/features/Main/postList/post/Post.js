@@ -30,11 +30,10 @@ const Span = Styled.span`
     margin-right: 10px;
 `;
 
-export const Post = (props) => {
-    console.log('Post/props --> ', props);
-    const { author, link, title, score, comment_num } = props;
+export const Post = ({post}) => {
+    const { id, author, link, title, score, comment_num } = post;
     return (
-        <PostItem>
+        <PostItem key={id}>
             <PostTitle><Link href={link}>{title}</Link></PostTitle>
             <PostDetails>
                 <Span>{score} pts</Span><Span>by {author}</Span><Span>{comment_num} comments</Span>

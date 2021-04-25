@@ -9,11 +9,11 @@ const Aside = Styled.aside`
     padding: 35px 10px 20px 50px;
 `;
 
-
+// <Logo width={48} height='auto'/>
 export const Sidebar = () => {
     return (
         <Aside>
-            <Logo width={48} height='auto'/>
+            
             <WebsiteList/>
         </Aside>
     );
