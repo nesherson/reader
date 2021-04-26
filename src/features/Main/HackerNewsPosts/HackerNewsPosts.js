@@ -18,8 +18,6 @@ export const HackerNewsPosts = () => {
     
     const posts = useSelector(selectHackerNewsPosts);
 
-    console.log('hackerNews --> ', posts);
-
     return (
         <div>
             <Header>Hacker News</Header>

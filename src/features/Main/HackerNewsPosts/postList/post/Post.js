@@ -34,7 +34,7 @@ export const Post = ({post}) => {
     const { id, author, link, title, score, comment_num } = post;
     return (
         <PostItem key={id}>
-            <PostTitle><Link href={link}>{title}</Link></PostTitle>
+            <PostTitle><Link href={link} target='_blank' rel='noopener norefferer'>{title}</Link></PostTitle>
             <PostDetails>
                 <Span>{score} pts</Span><Span>by {author}</Span><Span>{comment_num} comments</Span>
             </PostDetails>

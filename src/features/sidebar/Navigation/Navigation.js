@@ -10,19 +10,21 @@ const List = Styled.ul`
 const ListItem = Styled.li` 
     color: #666;
     margin: 12px 0;
+    font-weight: bold;
 `;
 
 const Header = Styled.h2`
     margin: 45px 0;
 `;
 
-const Line = Styled.hr`
-    border-top: 1px solid #666;
-    border-bottom: none;
+const Divider = Styled.li`
+    background: linear-gradient(to right, #dcdcdc, rgba(206, 41, 41, 0));
+    height: 1px;
+    list-style: none;
 `;
 
 const style = {
-    textDecoration: 'none'
+    textDecoration: 'none',
 }
 
 export const Navigation = (props) => {
@@ -30,7 +32,7 @@ export const Navigation = (props) => {
     return (
         <div>
             <Header>Reddit</Header>
-            <Line/>
+            <Divider/>
             <List>
                 <Link style={style} to='/reddit'><ListItem>Reddit</ListItem></Link>
                 <Link style={style} to='/hacker-news'><ListItem>Hacker News</ListItem></Link>
