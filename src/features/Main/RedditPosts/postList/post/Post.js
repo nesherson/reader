@@ -1,8 +1,8 @@
 import Styled from 'styled-components';
 
 const PostItem = Styled.li`
-    padding: 10px 10px 10px 17px;
-    margin: 0 0 7px 15px;
+    padding: 10px;
+    margin: 0 0 7px 0;
     &:hover {
         background-color: #EEE;
     } 

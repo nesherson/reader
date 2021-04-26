@@ -25,6 +25,11 @@ const redditPosts = createSlice({
         hasError: false,
         error: null
     },
+    reducers: {
+        handleSelected: (state, action) => {
+            state.isSelected = action.payload;
+        }
+    },
     extraReducers: {
         [getRedditPosts.pending]: (state, action) => {
             state.isLoading = true;
@@ -56,6 +61,9 @@ export const selectRedditPosts = (state) => state.redditPosts.posts.map(post => 
     }
     
 });
+
+export const selectIsSelected = (state) => state.redditPosts.isSelected;
+export const { handleSelected } = redditPosts.actions;
     
 
 

@@ -1,9 +1,7 @@
 import  Styled  from 'styled-components';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Main } from './features/main/Main';
 import { Sidebar } from './features/sidebar/Sidebar';
-
-// https://www.reddit.com/r/popular.json
 
 const Wrapper = Styled.div`
   display: flex;

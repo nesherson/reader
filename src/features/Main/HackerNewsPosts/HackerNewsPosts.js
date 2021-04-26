@@ -8,6 +8,11 @@ const Header = Styled.h1`
     margin-left: 25px;
 `;
 
+const Loading = Styled.h2`
+    font-size: 1.85rem;
+    margin: 10px 0 0 25px;
+`;
+
 export const HackerNewsPosts = () => {
 
     const dispatch = useDispatch();
@@ -21,7 +26,7 @@ export const HackerNewsPosts = () => {
     return (
         <div>
             <Header>Hacker News</Header>
-            { !posts ? <h2>Loading...</h2> : <PostList posts={posts}/> }
+            { !posts.length ? <Loading>Loading...</Loading> : <PostList posts={posts}/> }
         </div>
     );
 }

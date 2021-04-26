@@ -6,7 +6,7 @@ import { HackerNewsPosts } from './HackerNewsPosts/HackerNewsPosts';
 const MainPage = Styled.main`
     background-color: #f4f4f4;
     color: #333;
-    flex: 3;
+    flex: 4;
 `;
 
 export const Main = () => {

@@ -6,7 +6,10 @@ const Aside = Styled.aside`
     flex: 1;
     min-width: 220px;
     background-color: #eee;
-    padding: 35px 10px 20px 50px;
+    padding: 35px 10px 20px 75px;
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const Sidebar = () => {

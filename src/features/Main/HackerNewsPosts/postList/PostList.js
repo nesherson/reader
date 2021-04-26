@@ -4,7 +4,7 @@ import { Post } from './post/Post';
 const List = Styled.ul`
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 15px;
     `;
 
 export const PostList = ({posts}) => {
