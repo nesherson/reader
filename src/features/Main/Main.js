@@ -1,4 +1,5 @@
 import Styled from 'styled-components';
+import { Route, Switch } from 'react-router-dom';
 import { RedditPosts } from './RedditPosts/RedditPosts';
 import { HackerNewsPosts } from './HackerNewsPosts/HackerNewsPosts';
 
@@ -10,8 +11,11 @@ const MainPage = Styled.main`
 
 export const Main = () => {
     return (
+        <Switch>
         <MainPage>
-            <HackerNewsPosts />         
+            <Route exact path='/reddit' component={RedditPosts}/>
+            <Route exact path='/hacker-news' component={HackerNewsPosts}/>
         </MainPage>
+        </Switch>
     );
 }

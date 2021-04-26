@@ -1,4 +1,5 @@
 import Styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const List = Styled.ul`
     list-style: none;
@@ -20,18 +21,19 @@ const Line = Styled.hr`
     border-bottom: none;
 `;
 
-const websites = ['Reddit', 'Hacker News'];
+const style = {
+    textDecoration: 'none'
+}
 
-export const WebsiteList = (props) => {
+export const Navigation = (props) => {
 
     return (
         <div>
             <Header>Reddit</Header>
             <Line/>
             <List>
-            { websites.map(item => {
-                return <ListItem key={item}>{item}</ListItem>
-            })}
+                <Link style={style} to='/reddit'><ListItem>Reddit</ListItem></Link>
+                <Link style={style} to='/hacker-news'><ListItem>Hacker News</ListItem></Link>
         </List>
         </div>
     );

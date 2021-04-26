@@ -1,4 +1,5 @@
 import  Styled  from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Main } from './features/main/Main';
 import { Sidebar } from './features/sidebar/Sidebar';
 
@@ -11,10 +12,12 @@ const Wrapper = Styled.div`
 
 function App() {
   return (
-    <Wrapper>
-      <Sidebar/>
-      <Main/>
-    </Wrapper>
+    <Router>
+      <Wrapper>
+        <Sidebar/>
+        <Main/>
+      </Wrapper>
+    </Router>
   );
 }
 

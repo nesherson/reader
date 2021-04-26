@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import { WebsiteList } from './WebsiteList/WebsiteList'
+import { Navigation } from './Navigation/Navigation'
 import { Logo } from './Logo/Logo';
 
 const Aside = Styled.aside`
@@ -14,7 +14,7 @@ export const Sidebar = () => {
     return (
         <Aside>
             
-            <WebsiteList/>
+            <Navigation/>
         </Aside>
     );
 }

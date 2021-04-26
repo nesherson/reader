@@ -1,15 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-
 const hackerNewsUrl = 'https://hacker-news.firebaseio.com//v0/topstories.json';
-// const hackerNewsPostUrl = 'https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty';
-
 
 export const fetchHackerNewsPosts = createAsyncThunk(
     'hackerNewsPosts/fetchHackerNewsPosts',
     async () => {
         const ids = await fetch(hackerNewsUrl).then(resp => resp.json());  
-        return Promise.all(ids.slice(0, 25).map(async id => {
+        return Promise.all(ids.slice(0, 15).map(async id => {
             return await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(resp => resp.json());   
         }));
     }
@@ -54,6 +51,4 @@ export const selectHackerNewsPosts = (state) => {
             title: post.title,
             comment_num: post.descendants,
         }});
-
-   
 };
