@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const redditUrl = 'https://www.reddit.com/r/popular.json';
 export const getRedditPosts = createAsyncThunk(
-    'getRedditPosts',
+    'redditPosts/getRedditPosts',
     async() => {
         const response = await fetch(redditUrl);
         try {
@@ -16,45 +16,6 @@ export const getRedditPosts = createAsyncThunk(
         }
     }
 );
-
-const posts = [
-    {
-        link: '#',
-        title: 'Common interface to linux NIC',
-        score: 15,
-        author: 'Hacker News',
-        comment_num: 300
-    },
-    {
-        link: '#',
-        title: 'What is most overrated product',
-        score: 120,
-        author: 'Reddit',
-        comment_num: 450
-    },
-    {
-        link: '#',
-        title: 'Memegine - A search engine for memes',
-        score: 99,
-        author: 'Product Hunt',
-        comment_num: 78
-    },
-    {
-        link: '#',
-        title: 'Twitch becoming softcore pornhub',
-        score: 10000,
-        author: 'josef',
-        comment_num: 896
-    }
-    ,
-    {
-        link: '#',
-        title: 'Refugees giving back',
-        score: 670,
-        author: 'eltthu',
-        comment_num: 356
-    }
-];
 
 const redditPosts = createSlice({
     name: 'redditPosts',
