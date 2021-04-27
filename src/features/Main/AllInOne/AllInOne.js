@@ -22,29 +22,51 @@ export const AllInOne = () => {
     let hackerNewsPosts = useSelector(selectHackerPosts);
 
      if (!redditPosts.length) {
-         dispatch(fetchRedditPosts);
+         dispatch(fetchRedditPosts());
      }
     if (!hackerNewsPosts.length) {
         dispatch(fetchHackerNewsPosts());
     };
 
-    // useEffect(() => {
-    //     const redditPosts = useSelector(selectRedditPosts);
-    //     if (!redditPosts.length) {
-    //         dispatch(fetchRedditPosts);
-    //     }
-    //     const hackerNewsPosts = useSelector(selectHackerNewsPosts);
-    //     if (!hackerNewsPosts.length) {
-    //         dispatch(fetchHackerNewsPosts);
-    //     }
-    // }, [dispatch]);
+    //  console.log('reddit --> ', redditPosts);
+    //  console.log('hacker --> ', hackerNewsPosts);
 
-    console.log('reddit --> ', redditPosts);
-    console.log('hacker --> ', hackerNewsPosts);
+    // const allPosts = !redditPosts.length && !hackerNewsPosts.length ? [] : [...redditPosts, ...hackerNewsPosts];
+    // console.log(allPosts);'
 
+     let allPosts = [];
+     if (redditPosts.length && hackerNewsPosts.length) {
+        const tempRedditPosts = redditPosts.map(post => {
+            return {
+                id: post.data.id,
+                type: 'Reddit',
+                author: post.data.author,
+                title: post.data.title,
+                link: post.data.url,
+                score: post.data.ups,
+                comment_num: post.data.num_comments
+            } 
+        });
+        const tempHackerNewsPosts = hackerNewsPosts.map(post => {
+            return {
+                id: post.id,
+                type: 'Hacker News',
+                author: post.by,
+                score: post.score,
+                link: post.url,
+                title: post.title,
+                comment_num: post.descendants,
+            }
+        });
+        allPosts = [...tempRedditPosts, ...tempHackerNewsPosts];
+     }
+     // console.log(allPosts);
 
     return (
-       null
+        <div>
+        <Header>All In One</Header>
+        { !allPosts.length ? <Loading>Loading...</Loading> : <PostList posts={allPosts}/> }
+    </div>
     );
 }
 /*
