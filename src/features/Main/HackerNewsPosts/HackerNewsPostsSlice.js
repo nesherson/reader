@@ -52,3 +52,5 @@ export const selectHackerNewsPosts = (state) => {
             comment_num: post.descendants,
         }});
 };
+
+export const selectHackerPosts = (state) => state.hackerNewsPosts.posts;

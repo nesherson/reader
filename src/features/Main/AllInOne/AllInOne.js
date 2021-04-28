@@ -1,18 +1,38 @@
 import Styled from 'styled-components';
 import { PostList } from './postList/PostList';
-import { selectHackerNewsPosts, fetchHackerNewsPosts, selectHackerPosts } from '../HackerNewsPosts/HackerNewsPostsSlice.js';
-import { selectRedditPosts, fetchRedditPosts, selectPosts } from '../RedditPosts/redditPostsSlice.js';
+import { fetchHackerNewsPosts, selectHackerPosts } from '../HackerNewsPosts/HackerNewsPostsSlice.js';
+import { fetchRedditPosts, selectPosts } from '../RedditPosts/redditPostsSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 
 
 const Header = Styled.h1`
-    margin-left: 25px;
+    margin: 0 25px 15px 25px;
+    padding: 25px 0 0 0;
 `;
 
 const Loading = Styled.h2`
     font-size: 1.85rem;
     margin: 10px 0 0 25px;
 `;
+
+const shuffle = (array) => {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
 
 export const AllInOne = () => {
 
@@ -27,12 +47,6 @@ export const AllInOne = () => {
     if (!hackerNewsPosts.length) {
         dispatch(fetchHackerNewsPosts());
     };
-
-    //  console.log('reddit --> ', redditPosts);
-    //  console.log('hacker --> ', hackerNewsPosts);
-
-    // const allPosts = !redditPosts.length && !hackerNewsPosts.length ? [] : [...redditPosts, ...hackerNewsPosts];
-    // console.log(allPosts);'
 
      let allPosts = [];
      if (redditPosts.length && hackerNewsPosts.length) {
@@ -58,9 +72,8 @@ export const AllInOne = () => {
                 comment_num: post.descendants,
             }
         });
-        allPosts = [...tempRedditPosts, ...tempHackerNewsPosts];
+        allPosts = shuffle([...tempRedditPosts, ...tempHackerNewsPosts]);
      }
-     // console.log(allPosts);
 
     return (
         <div>
@@ -69,10 +82,3 @@ export const AllInOne = () => {
     </div>
     );
 }
-/*
- <div>
-            <Header>All In One</Header>
-            { !posts.length ? <Loading>Loading...</Loading> : <PostList posts={posts}/> }
-        </div>
-
-*/

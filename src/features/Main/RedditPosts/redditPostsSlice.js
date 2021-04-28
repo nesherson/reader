@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const redditUrl = 'https://www.reddit.com/r/popular.json';
-export const getRedditPosts = createAsyncThunk(
-    'redditPosts/getRedditPosts',
+export const fetchRedditPosts = createAsyncThunk(
+    'redditPosts/fetchRedditPosts',
     async() => {
         const response = await fetch(redditUrl);
         try {
@@ -25,22 +25,17 @@ const redditPosts = createSlice({
         hasError: false,
         error: null
     },
-    reducers: {
-        handleSelected: (state, action) => {
-            state.isSelected = action.payload;
-        }
-    },
     extraReducers: {
-        [getRedditPosts.pending]: (state, action) => {
+        [fetchRedditPosts.pending]: (state, action) => {
             state.isLoading = true;
             state.hasError = false;
         },
-        [getRedditPosts.fulfilled]: (state, action) => {
+        [fetchRedditPosts.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.hasError = false;
             state.posts = action.payload;
         },
-        [getRedditPosts.rejected]: (state, action) => {
+        [fetchRedditPosts.rejected]: (state, action) => {
             state.isLoading = false;
             state.hasError = true;
             state.error = action.payload.error;
@@ -48,7 +43,6 @@ const redditPosts = createSlice({
     }
 }
 );
-
 
 export const selectRedditPosts = (state) => state.redditPosts.posts.map(post => {
     return {
@@ -58,13 +52,8 @@ export const selectRedditPosts = (state) => state.redditPosts.posts.map(post => 
         link: post.data.url,
         score: post.data.ups,
         comment_num: post.data.num_comments
-    }
-    
+    } 
 });
 
-export const selectIsSelected = (state) => state.redditPosts.isSelected;
-export const { handleSelected } = redditPosts.actions;
-    
-
-
+export const selectPosts = (state) => state.redditPosts.posts;
 export default redditPosts.reducer;

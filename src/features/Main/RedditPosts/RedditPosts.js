@@ -1,15 +1,16 @@
 import Styled from 'styled-components';
 import { PostList } from './postList/PostList';
-import { selectRedditPosts, getRedditPosts, handleSelected } from './redditPostsSlice.js';
+import { selectRedditPosts, fetchRedditPosts } from './redditPostsSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 const Header = Styled.h1`
-    margin-left: 25px;
+    margin: 0 25px 15px 25px;
+    padding: 25px 0 0 0;
 `;
 
 const Loading = Styled.h2`
-    font-size: 1.85rem;
+    font-size: 1.60rem;
     margin: 10px 0 0 25px;
 `;
 
@@ -18,7 +19,7 @@ export const RedditPosts = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getRedditPosts());
+        dispatch(fetchRedditPosts());
     }, [dispatch]);
 
     const posts = useSelector(selectRedditPosts);

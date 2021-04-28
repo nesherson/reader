@@ -3,18 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Main } from './features/main/Main';
 import { Sidebar } from './features/sidebar/Sidebar';
 
-const Wrapper = Styled.div`
-  display: flex;
-  min-height: 100vh;
-`;
-
 function App() {
   return (
     <Router>
-      <Wrapper>
+      <div>
         <Sidebar/>
         <Main/>
-      </Wrapper>
+      </div>
     </Router>
   );
 }

@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 const Header = Styled.h1`
-    margin-left: 25px;
+    margin: 0 25px 15px 25px;
+    padding: 25px 0 0 0;
 `;
 
 const Loading = Styled.h2`
