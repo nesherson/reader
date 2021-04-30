@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 import { PostList } from './postList/PostList';
-import { selectRedditPosts, fetchRedditPosts } from './redditPostsSlice.js';
+import { selectRedditPosts, fetchRedditPosts, selectLoading } from './redditPostsSlice.js';
 import { formatRedditPost } from '../../../utilities/utils.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -24,11 +24,12 @@ export const RedditPosts = () => {
     }, [dispatch]);
 
     const posts = useSelector(selectRedditPosts).map(post => formatRedditPost(post));
+    const isLoading = useSelector(selectLoading);
     
     return (
         <div>
             <Header>Reddit</Header>
-            { !posts.length ? <Loading>Loading...</Loading> : <PostList posts={posts}/> }
+            { isLoading ? <Loading>Loading...</Loading> : <PostList posts={posts}/> }
         </div>
     );
 }

@@ -47,3 +47,4 @@ const redditPosts = createSlice({
 export default redditPosts.reducer;
 
 export const selectRedditPosts = (state) => state.redditPosts.posts;
+export const selectLoading = (state) => state.redditPosts.isLoading;
