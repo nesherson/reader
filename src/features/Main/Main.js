@@ -11,7 +11,7 @@ const MainPage = Styled.main`
     width: 75%;
     height: 100%;
     position: relative;
-    z-index: 999;
+    z-index: 998;
     @media (max-width: 768px) {
         margin-left: 20px;
     }

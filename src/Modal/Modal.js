@@ -2,7 +2,6 @@ import Styled, { css } from 'styled-components';
 import  ReactDOM from 'react-dom';
 import { Close } from '../assets/icons/Close.js';
 
-
 const StyledModal = Styled.div`
     position: fixed;
     left: 0;
@@ -22,7 +21,6 @@ const StyledModal = Styled.div`
         opacity: 0;
         pointer-events: none;
     `}
-    }
 `;
 
 const ModalContent = Styled.div`
@@ -58,19 +56,58 @@ const ModalFooter = Styled.div`
     padding: 10px;
 `;
 
+const Options = Styled.ul`
+    margin: 0;
+    padding-inline-start: 18px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+`;
 
+const OptionItem = Styled.li`
+    padding: 3px;
+`;
+
+
+const Text = Styled.p`
+    margin: 8px 0;
+    padding: 5px 5px;
+`;
 
 const Modal = (props) => {
+    
+    const {allOptions, selectedOptions, handleOptions } = props;
+
     return ReactDOM.createPortal(
         <StyledModal show={props.show} onClick={props.onClose}>
-            <ModalContent show={props.show} onClick={(e) => {e.stopPropagation();}}>
+            <ModalContent show={props.show}  onClick={(e) => {e.stopPropagation();}}>
                 <ModalHeader>
                     <Header>{props.title}</Header>
                         <div onClick={props.onClose}>
                             <Close width={24} height={24}/>
                         </div>
                 </ModalHeader>
-                <ModalBody>{props.children}</ModalBody>
+                <ModalBody>
+                <Text>Enabled news sources</Text>
+                        <Options>
+                            { allOptions.map((option, i) => {
+                                const input = selectedOptions.includes(option) ? 
+                                    <input id={option} type="checkbox" checked={true} value={option}
+                                    onChange={(e) => handleOptions(e, selectedOptions)}/>
+                                    : 
+                                    <input id={option} type="checkbox" value={option}
+                                    onChange={(e) => handleOptions(e, selectedOptions)}/>;
+
+                                return ( <OptionItem key={`${option}${i}`}>
+                                            <label htmlFor={option}>
+                                                {input}
+                                                <span>{option}</span>
+                                            </label>
+                                        </OptionItem>)
+                                        })
+                            }
+                        </Options>
+                </ModalBody>
                 <ModalFooter>
                 </ModalFooter>
             </ModalContent>        

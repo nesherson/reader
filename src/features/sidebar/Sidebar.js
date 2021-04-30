@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 import { Navigation } from './Navigation/Navigation'
-import { Logo } from './Logo/Logo';
+import { Logo } from '../../assets/icons/Logo';
 
 const Aside = Styled.aside`
     box-sizing: border-box;
