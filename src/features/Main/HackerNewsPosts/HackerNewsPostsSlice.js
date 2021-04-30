@@ -42,3 +42,4 @@ const hackerNewsPosts = createSlice({
 export default hackerNewsPosts.reducer;
 
 export const selectHackerNewsPosts = (state) => state.hackerNewsPosts.posts;
+export const selectLoading = (state) => state.isLoading;
