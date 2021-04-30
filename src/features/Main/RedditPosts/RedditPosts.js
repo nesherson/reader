@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
 import { PostList } from './postList/PostList';
 import { selectRedditPosts, fetchRedditPosts } from './redditPostsSlice.js';
+import { formatRedditPost } from '../../../utilities/utils.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -22,7 +23,7 @@ export const RedditPosts = () => {
         dispatch(fetchRedditPosts());
     }, [dispatch]);
 
-    const posts = useSelector(selectRedditPosts);
+    const posts = useSelector(selectRedditPosts).map(post => formatRedditPost(post));
     
     return (
         <div>

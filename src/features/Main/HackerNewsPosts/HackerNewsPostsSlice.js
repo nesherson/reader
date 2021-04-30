@@ -41,16 +41,4 @@ const hackerNewsPosts = createSlice({
 
 export default hackerNewsPosts.reducer;
 
-export const selectHackerNewsPosts = (state) => {
-    return state.hackerNewsPosts.posts.map(post => {
-        return {
-            id: post.id,
-            author: post.by,
-            score: post.score,
-            link: post.url,
-            title: post.title,
-            comment_num: post.descendants,
-        }});
-};
-
-export const selectHackerPosts = (state) => state.hackerNewsPosts.posts;
+export const selectHackerNewsPosts = (state) => state.hackerNewsPosts.posts;

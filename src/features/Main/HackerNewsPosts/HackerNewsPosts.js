@@ -3,6 +3,7 @@ import { PostList } from './postList/PostList';
 import { selectHackerNewsPosts, fetchHackerNewsPosts } from './HackerNewsPostsSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { formatHackerNewsPost } from '../../../utilities/utils.js'
 
 const Header = Styled.h1`
     margin: 0 25px 15px 25px;
@@ -22,7 +23,7 @@ export const HackerNewsPosts = () => {
         dispatch(fetchHackerNewsPosts());
     }, [dispatch]);
     
-    const posts = useSelector(selectHackerNewsPosts);
+    const posts = useSelector(selectHackerNewsPosts).map(post => formatHackerNewsPost(post));
 
     return (
         <div>

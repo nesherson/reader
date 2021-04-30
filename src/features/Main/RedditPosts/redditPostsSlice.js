@@ -44,16 +44,6 @@ const redditPosts = createSlice({
 }
 );
 
-export const selectRedditPosts = (state) => state.redditPosts.posts.map(post => {
-    return {
-        id: post.data.id,
-        author: post.data.author,
-        title: post.data.title,
-        link: post.data.url,
-        score: post.data.ups,
-        comment_num: post.data.num_comments
-    } 
-});
-
-export const selectPosts = (state) => state.redditPosts.posts;
 export default redditPosts.reducer;
+
+export const selectRedditPosts = (state) => state.redditPosts.posts;

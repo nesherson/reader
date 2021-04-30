@@ -9,15 +9,10 @@ const newsOptions = createSlice({
     reducers: {
         toggleOption: (state, action) => {
             if (state.selectedOptions.includes(action.payload)) {
-                const newOptions = state.selectedOptions.filter(option => option !== action.payload);
-                newOptions.sort((a, b) => a - b);
-                state.selectedOptions = newOptions.slice();
+                state.selectedOptions = state.selectedOptions.filter(option => option !== action.payload);
             }
             else {
-                const newOptions = state.selectedOptions.slice();
-                newOptions.push(action.payload);
-                newOptions.sort((a, b) => a - b);
-                state.selectedOptions = newOptions;
+                state.selectedOptions.push(action.payload);
             }
         },
         setOptions: (state, action) => {

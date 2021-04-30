@@ -97,8 +97,8 @@ const Modal = (props) => {
                         <Options>
                             { allOptions.map((option, i) => {
                                 const checkedValue = selectedOptions.includes(option) ? true : false;
-
-                                return ( <OptionItem key={`${option}${i}`}>
+                                return (
+                                         <OptionItem key={`${option}${i}`}>
                                             <label htmlFor={option}>
                                                 <input id={option} type='checkbox' checked={checkedValue} value={option}
                                                 onChange={(e) => dispatch(toggleOption(e.target.value))}/>

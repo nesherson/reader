@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleOption, setOptions, selectAllOptions, selectSelectedOptions } from './navigationSlice.js';
+import { setOptions, selectAllOptions, selectSelectedOptions } from './navigationSlice.js';
 import Styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Modal from '../../../Modal/Modal';
