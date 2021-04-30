@@ -1,6 +1,9 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSelectedOptions, selectAllOptions, toggleOption } from '../features/sidebar/Navigation/navigationSlice.js';
 import Styled, { css } from 'styled-components';
 import  ReactDOM from 'react-dom';
 import { Close } from '../assets/icons/Close.js';
+
 
 const StyledModal = Styled.div`
     position: fixed;
@@ -75,8 +78,10 @@ const Text = Styled.p`
 `;
 
 const Modal = (props) => {
-    
-    const {allOptions, selectedOptions, handleOptions } = props;
+
+    const dispatch = useDispatch();
+    const allOptions = useSelector(selectAllOptions);
+    const selectedOptions = useSelector(selectSelectedOptions);
 
     return ReactDOM.createPortal(
         <StyledModal show={props.show} onClick={props.onClose}>
@@ -91,16 +96,12 @@ const Modal = (props) => {
                 <Text>Enabled news sources</Text>
                         <Options>
                             { allOptions.map((option, i) => {
-                                const input = selectedOptions.includes(option) ? 
-                                    <input id={option} type="checkbox" checked={true} value={option}
-                                    onChange={(e) => handleOptions(e, selectedOptions)}/>
-                                    : 
-                                    <input id={option} type="checkbox" value={option}
-                                    onChange={(e) => handleOptions(e, selectedOptions)}/>;
+                                const checkedValue = selectedOptions.includes(option) ? true : false;
 
                                 return ( <OptionItem key={`${option}${i}`}>
                                             <label htmlFor={option}>
-                                                {input}
+                                                <input id={option} type='checkbox' checked={checkedValue} value={option}
+                                                onChange={(e) => dispatch(toggleOption(e.target.value))}/>
                                                 <span>{option}</span>
                                             </label>
                                         </OptionItem>)
