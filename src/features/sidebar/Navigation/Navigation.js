@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleOption, setOptions, selectAllOptions, selectSelectedOptions } from './navigationSlice.js';
 import Styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Modal from '../../../Modal/Modal';
+
  
 const NavList = Styled.ul`
     list-style: none;
@@ -36,32 +39,21 @@ const Divider = Styled.li`
 
 export const Navigation = () => {
     const [showModal, setShowModal] = useState(false);
-    const allOptions = ['Reddit', 'Hacker News'];
-    const [selectedOptions, setSelectedOptions] = useState([]);
-    
-    const handleOptions = (e, options) => {
-        if (options.includes(e.target.value)) {
-            const newOptions = options.filter(item => item !== e.target.value);
-            newOptions.sort((a, b) => a - b);
-            setSelectedOptions(newOptions);
-        } else {
-            const newOptions = options.slice();
-            newOptions.push(e.target.value);
-            newOptions.sort((a, b) => a - b);
-            setSelectedOptions(newOptions);
-        }
-    }
 
+    const dispatch = useDispatch();
+    const allOptions = useSelector(selectAllOptions);
+    const selectedOptions = useSelector(selectSelectedOptions);
+    
+    
     useEffect(() => {
-        setSelectedOptions(allOptions);
-    }, []);
+        dispatch(setOptions(allOptions));
+    }, [dispatch]);
     
 
     console.log(selectedOptions);
 
     return (
         <nav>
-            
             <NavList>
                 <LinkItem to='/all-in-one'>All In One</LinkItem>
                 <Divider/>
@@ -75,7 +67,7 @@ export const Navigation = () => {
                     Settings
                 </ListItem>
             </NavList>
-            <Modal show={showModal} onClose={() => setShowModal(false)} title='Settings' allOptions={allOptions} selectedOptions={selectedOptions} handleOptions={handleOptions}>       
+            <Modal show={showModal} onClose={() => setShowModal(false)} title='Settings'>       
             </Modal>
         </nav>
     );
