@@ -1,12 +1,13 @@
 import Styled from 'styled-components';
-import { Navigation } from './Navigation/Navigation'
+import { Navigation } from './Navigation/Navigation';
 import { Logo } from '../../assets/icons/Logo';
+import { ThemeToggle } from './themeToggle/ThemeToggle';
 
 const Aside = Styled.aside`
     box-sizing: border-box;
     width: 25%;
     min-width: 220px;
-    background-color: #eee;
+    background-color: ${(props) => props.theme.background};
     padding: 35px 15px 20px 5%;
     position: fixed;
     height: 100%;
@@ -16,10 +17,11 @@ const Aside = Styled.aside`
 `;
 
 export const Sidebar = () => {
-    return (
-        <Aside>
-        <Logo width={48}/>
-            <Navigation/>
-        </Aside>
-    );
-}
+  return (
+    <Aside>
+      <ThemeToggle />
+      <Logo width={48} color='#000' />
+      <Navigation />
+    </Aside>
+  );
+};

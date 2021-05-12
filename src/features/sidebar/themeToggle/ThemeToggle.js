@@ -9,13 +9,13 @@ const Toggle = Styled.div`
   padding: 10px;
   margin-bottom: 50px;
   cursor: pointer;
+  color: ${(props) => props.theme.primary};
 `;
 
 export const ThemeToggle = () => {
   const currentTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
   let toggleIcon = <Sun />;
-  console.log(currentTheme);
 
   const handleThemeToggle = () => {
     if (currentTheme === 'lightTheme') {

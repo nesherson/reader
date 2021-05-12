@@ -5,26 +5,27 @@ import { HackerNewsPosts } from './HackerNewsPosts/HackerNewsPosts';
 import { AllInOne } from './AllInOne/AllInOne';
 
 const MainPage = Styled.main`
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: ${(props) => props.theme.backgroundPrimary};
     margin-left: 25%;
     width: 75%;
     height: 100%;
     position: relative;
     z-index: 998;
     @media (max-width: 768px) {
-        margin-left: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
     }
 `;
 
 export const Main = () => {
-    return (
-        <Switch>
-        <MainPage>
-            <Route exact path='/all-in-one' component={AllInOne}/>
-            <Route exact path='/reddit' component={RedditPosts}/>
-            <Route exact path='/hacker-news' component={HackerNewsPosts}/>
-        </MainPage>
-        </Switch>
-    );
-}
+  return (
+    <Switch>
+      <MainPage>
+        <Route exact path='/all-in-one' component={AllInOne} />
+        <Route exact path='/reddit' component={RedditPosts} />
+        <Route exact path='/hacker-news' component={HackerNewsPosts} />
+      </MainPage>
+    </Switch>
+  );
+};
