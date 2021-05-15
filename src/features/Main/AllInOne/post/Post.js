@@ -9,31 +9,32 @@ const PostTitle = Styled.h3`
 
 const Link = Styled.a`
     text-decoration: none;
-    color: #000;
+    color: ${(props) => props.theme.primary};
     font-size: 1.05rem;
 `;
 
 const PostDetails = Styled.div`
     display: flex;
     font-size: 0.92rem;
-    color: #999;
+    color: ${(props) => props.theme.secondary};
+    
 `;
 
 const StyledSpan = Styled.span`
     margin-right: 10px;
 `;
 
-export const Post = ({post}) => {
-    const { type, author, link, title, score, comment_num } = post;
-    return (
-        <Link href={link} target='_blank' rel='noopener norefferer'>
-            <PostTitle>{title}</PostTitle>
-            <PostDetails>
-                <StyledSpan>{type}</StyledSpan>
-                <StyledSpan>{score} pts</StyledSpan>
-                <StyledSpan>by {author}</StyledSpan>
-                <StyledSpan>{comment_num} comments</StyledSpan>
-            </PostDetails>
-        </Link>
-    );
-}
+export const Post = ({ post }) => {
+  const { type, author, link, title, score, comment_num } = post;
+  return (
+    <Link href={link} target='_blank' rel='noopener norefferer'>
+      <PostTitle>{title}</PostTitle>
+      <PostDetails>
+        <StyledSpan>{type}</StyledSpan>
+        <StyledSpan>{score} pts</StyledSpan>
+        <StyledSpan>by {author}</StyledSpan>
+        <StyledSpan>{comment_num} comments</StyledSpan>
+      </PostDetails>
+    </Link>
+  );
+};

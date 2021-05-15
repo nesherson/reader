@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import { PostList } from './postList/PostList';
+import { Post } from './post/Post';
 import {
   fetchHackerNewsPosts,
   selectHackerNewsPosts,
@@ -68,11 +68,18 @@ export const AllInOne = () => {
   return (
     <div>
       <Header>All In One</Header>
-      {!allPosts.length ? (
-        <Loading>Loading...</Loading>
-      ) : (
-        <PostList posts={allPosts} />
-      )}
+      {!allPosts.length ? <Loading>Loading...</Loading> : null}
+      {allPosts ? (
+        <List>
+          {allPosts.map((post) => {
+            return (
+              <ListItem key={post.id}>
+                <Post post={post} />
+              </ListItem>
+            );
+          })}
+        </List>
+      ) : null}
     </div>
   );
 };

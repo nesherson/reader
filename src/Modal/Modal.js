@@ -34,7 +34,7 @@ const StyledModal = Styled.div`
 
 const ModalContent = Styled.div`
     width: 500px;
-    background-color: ${(props) => props.theme.background};
+    background-color: ${(props) => props.theme.backgroundPrimary};
     color: ${(props) => props.theme.primary};
     transition: all 0.5s ease-in-out;
     border-radius: 5px;
@@ -50,7 +50,7 @@ const ModalContent = Styled.div`
 
 const ModalHeader = Styled.div`
     padding: 15px 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid ${(props) => props.theme.secondary};
     display: flex;
     justify-content: space-between;
 `;
