@@ -11,6 +11,7 @@ const Aside = Styled.aside`
     padding: 35px 15px 20px 5%;
     position: fixed;
     height: 100%;
+    transition: background-color 0.2s ease;
     @media (max-width: 768px) {
         display: none;
     }
