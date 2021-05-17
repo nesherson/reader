@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import { Navigation } from './Navigation/Navigation';
 import { Logo } from '../../assets/icons/Logo';
-import { ThemeToggle } from './themeToggle/ThemeToggle';
+import { ThemeToggle } from './ThemeToggle/ThemeToggle';
 
 const Aside = Styled.aside`
     box-sizing: border-box;

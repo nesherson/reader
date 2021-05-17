@@ -1,14 +1,14 @@
 import Styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-
-import { Post } from './post/Post';
 import {
   selectHackerNewsPosts,
   fetchHackerNewsPosts,
   selectLoading,
 } from './hackerNewsPostsSlice.js';
 import { formatHackerNewsPost } from '../../../utilities/utils.js';
+
+import { Post } from '../../../UI/Post/Post';
 
 const Header = Styled.h1`
     margin: 0 25px 15px 25px;

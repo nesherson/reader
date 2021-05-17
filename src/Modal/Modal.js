@@ -1,10 +1,11 @@
+import Styled, { css } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectSelectedOptions,
   selectAllOptions,
   toggleOption,
-} from '../features/sidebar/Navigation/navigationSlice.js';
-import Styled, { css } from 'styled-components';
+} from '../features/Sidebar/Navigation/navigationSlice.js';
+
 import ReactDOM from 'react-dom';
 import { Close } from '../assets/icons/Close.js';
 

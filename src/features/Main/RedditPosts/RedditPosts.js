@@ -8,7 +8,7 @@ import {
   selectLoading,
 } from './redditPostsSlice.js';
 import { formatRedditPost } from '../../../utilities/utils.js';
-import { Post } from './post/Post';
+import { Post } from '../../../UI/Post/Post';
 
 const Header = Styled.h1`
     margin: 0 25px 15px 25px;

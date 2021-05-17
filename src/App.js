@@ -3,8 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import { Main } from './features/Main/Main';
-import { Sidebar } from './features/sidebar/Sidebar';
-import { selectTheme } from './features/sidebar/themeToggle/themeToggleSlice.js';
+import { Sidebar } from './features/Sidebar/Sidebar';
+import { selectTheme } from './features/Sidebar/ThemeToggle/themeToggleSlice.js';
 import darkTheme from './styles/darkTheme.js';
 import lightTheme from './styles/lightTheme.js';
 

@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { RedditPosts } from './RedditPosts/RedditPosts';
 import { HackerNewsPosts } from './HackerNewsPosts/HackerNewsPosts';
 import { AllInOne } from './AllInOne/AllInOne';
@@ -17,17 +17,13 @@ const MainPage = Styled.main`
         margin-right: 10px;
         width: 100%;
     }
-    
 `;
 
 export const Main = () => {
   return (
     <Switch>
       <MainPage>
-        <Route exact path='/'>
-          <Redirect to='/all-in-one' />
-        </Route>
-        <Route exact path='/all-in-one' component={AllInOne} />
+        <Route exact path='/' component={AllInOne} />
         <Route exact path='/reddit' component={RedditPosts} />
         <Route exact path='/hacker-news' component={HackerNewsPosts} />
       </MainPage>

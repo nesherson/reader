@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import { Post } from './post/Post';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchHackerNewsPosts,
   selectHackerNewsPosts,
@@ -8,12 +8,13 @@ import {
   fetchRedditPosts,
   selectRedditPosts,
 } from '../RedditPosts/redditPostsSlice.js';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   formatRedditPost,
   formatHackerNewsPost,
   shuffle,
 } from '../../../utilities/utils.js';
+
+import { Post } from '../../../UI/Post/Post';
 
 const Header = Styled.h1`
     margin: 0 25px 15px 25px;

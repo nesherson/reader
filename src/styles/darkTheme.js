@@ -1,4 +1,4 @@
-export default {
+const darkTheme = {
   backgroundPrimary: '#1a1c21',
   background: '#24272e',
   primary: '#d9d9d9',
@@ -6,3 +6,5 @@ export default {
   hover: '#666666',
   logo: '#d9d9d9',
 };
+
+export default darkTheme;

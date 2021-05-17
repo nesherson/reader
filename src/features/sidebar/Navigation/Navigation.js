@@ -19,17 +19,15 @@ const NavList = Styled.ul`
 
 const LinkItem = Styled(NavLink)` 
     color: ${(props) => props.theme.primary};
-    margin: 6px 0;
     text-decoration: none;
     &.active {
-    font-weight: bold;
-  }
+      font-weight: bold;
+    };
 `;
 
 const ListItem = Styled.li`
     color: ${(props) => props.theme.primary};
     margin: 6px 0;
-    text-decoration: none;
     cursor: pointer;
 `;
 
@@ -37,7 +35,7 @@ const Divider = Styled.li`
     background: linear-gradient(to right, ${(props) =>
       props.theme.primary}, rgba(206, 41, 41, 0));
     height: 1px;
-    margin: 20px 0;
+    margin: 20px 0 20px 0;
     list-style: none;
 `;
 
@@ -46,7 +44,15 @@ export const Navigation = () => {
 
   const dispatch = useDispatch();
   const allOptions = useSelector(selectAllOptions);
-  const selectedOptions = useSelector(selectSelectedOptions);
+  const selectedOptions = useSelector(selectSelectedOptions).map((item, i) => {
+    const pathname = item.split(' ').join('-').toLowerCase();
+    const key = `${item}${i}`;
+    return (
+      <ListItem key={key}>
+        <LinkItem to={`/${pathname}`}>{item}</LinkItem>
+      </ListItem>
+    );
+  });
 
   useEffect(() => {
     dispatch(setOptions(allOptions));
@@ -55,17 +61,9 @@ export const Navigation = () => {
   return (
     <nav>
       <NavList>
-        <LinkItem to='/all-in-one'>All In One</LinkItem>
+        <LinkItem to='/'>All In One</LinkItem>
         <Divider />
-        {selectedOptions.map((item, i) => {
-          const url = item.split(' ').join('-').toLowerCase();
-          const key = `${item}${i}`;
-          return (
-            <LinkItem key={key} to={`/${url}`}>
-              {item}
-            </LinkItem>
-          );
-        })}
+        {selectedOptions}
         <Divider />
         <ListItem
           onClick={() => {
