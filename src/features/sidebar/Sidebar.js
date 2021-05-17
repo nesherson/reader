@@ -1,4 +1,5 @@
 import Styled from 'styled-components';
+
 import { Navigation } from './Navigation/Navigation';
 import { Logo } from '../../assets/icons/Logo';
 import { ThemeToggle } from './ThemeToggle/ThemeToggle';

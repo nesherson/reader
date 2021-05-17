@@ -1,5 +1,6 @@
 import Styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { selectTheme, toggleTheme } from './themeToggleSlice.js';
 
 import { Sun } from '../../../assets/icons/Sun';

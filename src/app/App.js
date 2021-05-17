@@ -2,11 +2,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 
-import { Main } from './features/Main/Main';
-import { Sidebar } from './features/Sidebar/Sidebar';
-import { selectTheme } from './features/Sidebar/ThemeToggle/themeToggleSlice.js';
-import darkTheme from './styles/darkTheme.js';
-import lightTheme from './styles/lightTheme.js';
+import { Main } from '../features/Main/Main';
+import { Sidebar } from '../features/Sidebar/Sidebar';
+import { selectTheme } from '../features/Sidebar/ThemeToggle/themeToggleSlice.js';
+import darkTheme from '../styles/darkTheme.js';
+import lightTheme from '../styles/lightTheme.js';
 
 function App() {
   const currentTheme = useSelector(selectTheme);

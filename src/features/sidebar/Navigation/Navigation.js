@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  setOptions,
-  selectAllOptions,
-  selectSelectedOptions,
-} from './navigationSlice.js';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import Modal from '../../../Modal/Modal';
+
+import { selectSelectedOptions } from './Settings/settingsSlice.js';
+
+import Modal from '../../../UI/Modal/Modal';
+import { Settings } from './Settings/Settings';
 
 const NavList = Styled.ul`
     list-style: none;
@@ -29,6 +28,7 @@ const ListItem = Styled.li`
     color: ${(props) => props.theme.primary};
     margin: 6px 0;
     cursor: pointer;
+    
 `;
 
 const Divider = Styled.li`
@@ -42,8 +42,6 @@ const Divider = Styled.li`
 export const Navigation = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const dispatch = useDispatch();
-  const allOptions = useSelector(selectAllOptions);
   const selectedOptions = useSelector(selectSelectedOptions).map((item, i) => {
     const pathname = item.split(' ').join('-').toLowerCase();
     const key = `${item}${i}`;
@@ -54,17 +52,13 @@ export const Navigation = () => {
     );
   });
 
-  useEffect(() => {
-    dispatch(setOptions(allOptions));
-  }, [dispatch]);
-
   return (
     <nav>
       <NavList>
         <LinkItem to='/'>All In One</LinkItem>
         <Divider />
         {selectedOptions}
-        <Divider />
+        {selectedOptions.length ? <Divider /> : null}
         <ListItem
           onClick={() => {
             setShowModal(true);
@@ -77,7 +71,9 @@ export const Navigation = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title='Settings'
-      ></Modal>
+      >
+        <Settings />
+      </Modal>
     </nav>
   );
 };
