@@ -28,7 +28,6 @@ const ListItem = Styled.li`
     color: ${(props) => props.theme.primary};
     margin: 6px 0;
     cursor: pointer;
-    
 `;
 
 const Divider = Styled.li`
@@ -55,7 +54,7 @@ export const Navigation = () => {
   return (
     <nav>
       <NavList>
-        <LinkItem to='/'>All In One</LinkItem>
+        <LinkItem exact to='/'>All In One</LinkItem>
         <Divider />
         {selectedOptions}
         {selectedOptions.length ? <Divider /> : null}
