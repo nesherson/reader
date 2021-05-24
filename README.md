@@ -15,7 +15,7 @@ Currently supports hacker news and reddit
 ## Getting started
 
 ```
-git clone https://github.com/nesherson/gitLookup-app.git
+git clone https://github.com/nesherson/reader.git
 cd gitlookup-app
 npm install
 
