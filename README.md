@@ -16,7 +16,7 @@ Currently supports hacker news and reddit
 
 ```
 git clone https://github.com/nesherson/reader.git
-cd gitlookup-app
+cd reader
 npm install
 
 ```
